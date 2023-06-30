@@ -1,11 +1,13 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0.1rem;
+.logo{
+  font-size: 4.5rem;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
   text-align: center;
 }
-.logo{
-  font-size: 65px;
-  font-weight: 200;
-  font-family: Arial, Helvetica, sans-serif;
+.LeftRightHolder{
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   justify-content: center;
+   flex-wrap: wrap;
 }
