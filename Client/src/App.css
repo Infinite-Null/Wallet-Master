@@ -11,3 +11,12 @@
    justify-content: center;
    flex-wrap: wrap;
 }
+.frist{
+  font-size: 5.5rem;
+  font-weight: 600;
+}
+@media screen and (max-width:800px) {
+    .LeftRightHolder{
+      flex-direction: column;
+    }
+}

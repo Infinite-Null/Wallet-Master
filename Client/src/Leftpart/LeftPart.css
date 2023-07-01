@@ -1,0 +1,15 @@
+.MainLeftPart{
+    height: 90vh;
+    width:50vw;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 30px;
+}
+@media screen and (max-width:800px) {
+    .MainLeftPart{
+       height:  fit-content;
+       width: 90vw;
+    }
+}
