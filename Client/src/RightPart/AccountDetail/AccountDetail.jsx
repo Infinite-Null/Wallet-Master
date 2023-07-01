@@ -1,5 +1,8 @@
 import { Card, Grid, Text,} from "@nextui-org/react";
+import { useContext } from "react";
+import { TransectionContext } from "../../Context/TansectionContext";
 export default function AccountDetail(){
+  const {connectedAccount}=useContext(TransectionContext);
     return <Card css={{ border:"2px solid grey", w:"390px",height:"100px",maxHeight:"100px",minHeight:"100px",marginTop:"100px"}}>
     <Card.Header>
       <img
@@ -15,7 +18,7 @@ export default function AccountDetail(){
           </Text>
         </Grid>
         <Grid xs={12}>
-          <Text css={{ color: "$accents8" }}>--</Text>
+          <Text css={{ color: "$accents8"}}>{(connectedAccount=='')?"--":connectedAccount}</Text>
         </Grid>
       </Grid.Container>
     </Card.Header>
