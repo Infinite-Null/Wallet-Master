@@ -20,6 +20,17 @@ const getEthereumContract=()=>{
     })
 }
 export const TransectionProvider=(props)=>{
+    const [formData,setFormData]=useState({
+        addressTo:'',
+        amount:'',
+        keyword:'',
+        message:''
+    })
+
+    const handleChange=(e,name)=>{
+        setFormData((prev)=>({...prev,[name]:e.target.value}))
+    }
+
     var [connectedAccount,setConnectedAccount]=useState('');
     const checkWalletConnect=async()=>{
         if(!ethereum) return alert("Please install Metamask")
@@ -51,13 +62,27 @@ export const TransectionProvider=(props)=>{
     }
 
 
+    const sendTransection=async()=>{
+        try {
+            if(!ethereum) return alert("Please install Metamask")
+
+            
+        } catch (error) {
+            console.error(error)
+            throw new Error("No Ethereun object.")
+        }
+    }
+
     useEffect(()=>{
         checkWalletConnect();
-    },[connectedAccount])
+    },[connectedAccount,formData])
     return (
         <TransectionContext.Provider value={{
             connectWallet:connectWallet,
-            connectedAccount:connectedAccount
+            connectedAccount:connectedAccount,
+            formData:formData,
+            handleChange:handleChange,
+            setFormData:setFormData
         }}>
         {props.children}
         </TransectionContext.Provider>

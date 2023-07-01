@@ -1,6 +1,12 @@
 import { Input, Button} from "@nextui-org/react";
 import AccountDetail from "../AccountDetail/AccountDetail";
+import { useContext } from "react";
+import { TransectionContext } from './../../Context/TansectionContext';
+import { number } from "prop-types";
+
 export default function Form(){
+   const{formData,setFormData,handleChange}=useContext(TransectionContext);
+   console.log(formData)
     return ( 
        <>
         <AccountDetail/>
@@ -14,6 +20,9 @@ export default function Form(){
             fontSize:"40px",
 
            }}
+           onChange={(e)=>{
+            handleChange(e,"addressTo")
+           }}
            placeholder="400px"
           bordered 
           labelPlaceholder="Address To" 
@@ -24,10 +33,13 @@ export default function Form(){
           </div>
           <div className="mb-3">
            <Input 
+            onChange={(e)=>{
+               handleChange(e,"amount")
+              }}
+            type="number"
            css={{
             width:"300px",
             fontSize:"40px",
-
            }}
            placeholder="400px"
           bordered 
@@ -38,6 +50,9 @@ export default function Form(){
           </div>
           <div className="mb-3">
            <Input 
+            onChange={(e)=>{
+               handleChange(e,"keyword")
+              }}
            css={{
             width:"300px",
             fontSize:"40px",
@@ -52,6 +67,9 @@ export default function Form(){
           </div>
           <div className="mb-3">
            <Input 
+            onChange={(e)=>{
+               handleChange(e,"message")
+              }}
            css={{
             width:"300px",
             fontSize:"40px",
