@@ -25,10 +25,10 @@ contract Transections{
     }
 
     function getAllTransections() public view returns (TransferStruct[] memory){
-
+        return transections;
     }
 
     function getAllTransectionCount() public view returns(uint256){
-
+      return transectionCount;
     }
 }

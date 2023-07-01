@@ -13,23 +13,42 @@ const createEthereumContract = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner();
     const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
-    console.log(transactionsContract)
     return transactionsContract;
   };
 
 export const TransectionProvider=(props)=>{
+    
     const [formData,setFormData]=useState({
         addressTo:'',
         amount:'',
         keyword:'',
         message:''
     })
+    const [transections,SetTransections]=useState([])
     const [isLoading,setIsLoading]=useState(false)
     const [count,setCount]=useState(localStorage.getItem('count'))
     const handleChange=(e,name)=>{
         setFormData((prev)=>({...prev,[name]:e.target.value}))
     }
+    const getAllTransections=async()=>{
+        try {
+            if(!ethereum) return alert("Please Install Metamask")
+            const transectionContract=createEthereumContract()
+            const avaliableTransections=await transectionContract.getAllTransections()
 
+            const structuredTrans=avaliableTransections.map((e)=>({
+                addressTo:e.receiver,
+                addressFrom:e.sender,
+                time: new Date(e.timestamp.toNumber()*1000).toLocaleString(),
+                message:e.message,
+                keyword:e.keyword,
+                amount:parseInt(e.amount._hex)/(10**18)
+            }))
+            SetTransections(()=>structuredTrans)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     var [connectedAccount,setConnectedAccount]=useState('');
     const checkWalletConnect=async()=>{
         if(!ethereum) return alert("Please install Metamask")
@@ -39,13 +58,25 @@ export const TransectionProvider=(props)=>{
         if(accounts.length){
             const account0=accounts[0]
             setConnectedAccount(()=>account0)
-
-            //getAllTransection()
+            getAllTransections()
         }else{
             console.log('no account found')
         }
     }
     
+    const checkIfTran=async()=>{
+        try {
+            const transectionContract=createEthereumContract()
+            const transectionCount=await transectionContract.getAllTransectionCount()
+
+            window.localStorage.setItem("count",transectionCount)
+        } catch (error) {
+            console.log(error)
+            throw new Error("No Ethereun object.")
+        }
+    }
+
+
     const connectWallet=async()=>{
         try{
             if(!ethereum) return alert("Please install Metamask")
@@ -106,7 +137,8 @@ export const TransectionProvider=(props)=>{
 
     useEffect(()=>{
         checkWalletConnect();
-    },[connectedAccount,formData,isLoading,count])
+        checkIfTran();
+    },[connectedAccount,formData,isLoading,count,transections])
     return (
         <TransectionContext.Provider value={{
             connectWallet:connectWallet,
@@ -114,7 +146,8 @@ export const TransectionProvider=(props)=>{
             formData:formData,
             handleChange:handleChange,
             setFormData:setFormData,
-            sendTransection:sendTransection
+            sendTransection:sendTransection,
+            transections:transections
         }}>
         {props.children}
         </TransectionContext.Provider>
