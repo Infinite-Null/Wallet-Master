@@ -2,11 +2,26 @@ import { Input, Button} from "@nextui-org/react";
 import AccountDetail from "../AccountDetail/AccountDetail";
 import { useContext } from "react";
 import { TransectionContext } from './../../Context/TansectionContext';
-import { number } from "prop-types";
+// import AleartBox from './../../Context/Aleart';
+
 
 export default function Form(){
-   const{formData,setFormData,handleChange}=useContext(TransectionContext);
-   console.log(formData)
+   const{formData,handleChange,sendTransection}=useContext(TransectionContext);
+   const handleSubmit=()=>{
+      const {
+         addressTo,
+         amount,
+         keyword,
+         message
+     }=formData
+     if(!addressTo||
+      !amount||
+      !keyword||
+      !message){
+        return alert("Please fill all feilds")
+      }
+     sendTransection();
+   }
     return ( 
        <>
         <AccountDetail/>
@@ -83,7 +98,7 @@ export default function Form(){
           />
           </div>
           <div className="mb-3" style={{width:"100%"}}>
-          <Button bordered color="gradient" auto ghost css={{fontWeight:"500",padding:"10px",width:"100%"}}>
+          <Button bordered color="gradient" auto ghost css={{fontWeight:"500",padding:"10px",width:"100%"}} onClick={handleSubmit}>
           Send
         </Button>
           </div>
