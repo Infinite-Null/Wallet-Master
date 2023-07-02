@@ -32,6 +32,7 @@ Now the server is running in http://localhost:3000
 ## Features
 * Minimal Ui
 * Easy To use
+* Secure
 * Uses Blockchain technology
 * Uses Meta Mask
 * Fully Responsive
