@@ -30,10 +30,10 @@ Now the server is running in http://localhost:3000
 
 
 ## Features
-> Minimal Ui
-> Easy To use
-> Uses Blockchain technology
-> Uses Meta Mask
-> Fully Responsive
-> Each Transaction is linked with a gif
-> Each Transaction is stored and can be viewed later
+* Minimal Ui
+* Easy To use
+* Uses Blockchain technology
+* Uses Meta Mask
+* Fully Responsive
+* Each Transaction is linked with a gif
+* Each Transaction is stored and can be viewed later
