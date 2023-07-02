@@ -14,7 +14,7 @@ To install the project frist have to make the clone of project locally :
 
 ```
 git clone https://github.com/Infinite-Null/Web3-Wallet
-cd Web3-Wallet
+cd Web3-Wallet/Client
 npm install #or yarn install
 ```
 
@@ -24,7 +24,7 @@ To strat the project at your LocalHost :
 npm run dev
 ```
 
-Now the server is running in http://localhost:3000
+Now the server is running in http://localhost:5173/
 
 ## Screenshots
 
