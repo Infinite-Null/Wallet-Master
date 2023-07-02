@@ -1,4 +1,4 @@
-# Web3-Wallet
+# Wallet-Master
 >[Live Demo]()
 
 ## About
