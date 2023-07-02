@@ -38,3 +38,10 @@ Now the server is running in http://localhost:3000
 * Fully Responsive
 * Each Transaction is linked with a gif
 * Each Transaction is stored and can be viewed later
+
+## License
+>Copyright © 2023 Infinite-Null
+
+>Web3-Wallet is a free software licensed under GPL v3.0
+>It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+>without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
